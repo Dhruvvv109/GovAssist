@@ -1,8 +1,7 @@
 // Vercel Serverless Function: GET /api/schemes
-const { schemes } = require('./_data');
+import { schemes } from './_data.js';
 
-module.exports = function handler(req, res) {
-  // Allow CORS for local dev
+export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
   if (req.method !== 'GET') {
@@ -10,4 +9,4 @@ module.exports = function handler(req, res) {
   }
 
   return res.status(200).json({ success: true, data: schemes });
-};
+}

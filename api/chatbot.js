@@ -1,5 +1,5 @@
 // Vercel Serverless Function: POST /api/chatbot
-// Handles AI chatbot with scheme-only restriction
+// Handles AI chatbot — scheme-only guard + smart mock + optional OpenAI
 
 const SCHEME_KEYWORDS = [
   'scheme', 'yojana', 'subsidy', 'benefit', 'eligib', 'apply', 'application',
@@ -52,7 +52,7 @@ function getMockReply(message) {
   return 'I can help you with Indian government schemes! Ask me about eligibility criteria, required documents, or how to apply for schemes like PM Kisan, Ayushman Bharat, MUDRA Loan, PM Awas Yojana, and many more.';
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -69,28 +69,25 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ success: true, reply: OFF_TOPIC_REPLY });
   }
 
-  // If no OpenAI key, use smart mock responses
+  // If no OpenAI key configured, use smart mock responses
   if (!process.env.OPENAI_API_KEY) {
     return res.status(200).json({ success: true, reply: getMockReply(message) });
   }
 
   // OpenAI integration
   try {
-    const { OpenAI } = await import('openai');
+    const { default: OpenAI } = await import('openai');
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
     const messages = [
       {
         role: 'system',
         content: `You are GovAssist AI, an expert assistant EXCLUSIVELY for Indian government schemes.
-
 STRICT RULES:
 1. ONLY answer questions about Indian government schemes, eligibility, documents, and application processes.
 2. If asked about ANYTHING else, politely refuse and redirect to scheme topics.
-3. Keep answers under 120 words.
-4. Use simple language for common citizens.
-5. Mention official portal URLs when describing schemes.
-
+3. Keep answers under 120 words. Use simple language.
+4. Mention official portal URLs when describing schemes.
 Schemes you know: PM Kisan, MUDRA, Ayushman Bharat, PM Awas Yojana, Startup India, PM Ujjwala, NSP Scholarships, Atal Pension, Jan Dhan, E-Shram, PM Fasal Bima, PMKVY, SVANidhi, Jal Jeevan Mission, PMSBY, PM Matru Vandana.`
       },
       ...(history || []),
@@ -107,7 +104,7 @@ Schemes you know: PM Kisan, MUDRA, Ayushman Bharat, PM Awas Yojana, Startup Indi
     return res.status(200).json({ success: true, reply: completion.choices[0].message.content });
   } catch (err) {
     console.error('OpenAI error:', err.message);
-    // Fallback to mock on error
+    // Graceful fallback to mock on error
     return res.status(200).json({ success: true, reply: getMockReply(message) });
   }
-};
+}

@@ -1,14 +1,12 @@
-// Vercel Serverless Function: GET /api/schemes
-// Returns all 18 Indian government schemes
-
-const schemes = [
+// Shared schemes data — used by all Vercel serverless functions
+export const schemes = [
   {
     id: '1',
     name: 'PM Kisan Samman Nidhi',
     category: 'Agriculture',
     description: 'Financial support of \u20b96,000/year to small and marginal farmer families across India.',
     eligibility: { maxIncome: 200000, targetGroups: ['Farmer', 'Any'], states: ['All'] },
-    details: 'Under PM-KISAN scheme, income support of \u20b96000 per year in three equal installments of \u20b92000 every four months is provided to all land holding farmer families.',
+    details: 'Under PM-KISAN, income support of \u20b96000/year in three equal installments of \u20b92000 every four months is provided to all land holding farmer families.',
     checklist: ['Must own cultivable land', 'Indian citizen', 'Annual income below \u20b92 Lakhs', 'Not a government employee'],
     documents: ['Aadhaar Card', 'Land Records', 'Bank Passbook', 'Mobile Number'],
     apply_url: 'https://pmkisan.gov.in/'
@@ -39,7 +37,7 @@ const schemes = [
     id: '4',
     name: 'Beti Bachao Beti Padhao',
     category: 'Education',
-    description: 'Sukanya Samriddhi savings scheme with 8.2% interest rate to secure a girl child\'s future.',
+    description: "Sukanya Samriddhi savings scheme with 8.2% interest rate to secure a girl child's future.",
     eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
     details: 'A small savings scheme for girl children. Minimum \u20b9250/year; maximum \u20b91.5 lakh/year. Tax benefits under Section 80C.',
     checklist: ['Girl child below 10 years of age', 'Guardian must be Indian citizen', 'One account per girl child'],
@@ -118,7 +116,7 @@ const schemes = [
     category: 'Agriculture',
     description: 'Crop insurance with very low premium (1.5%-5%) protecting farmers from natural disasters.',
     eligibility: { maxIncome: 999999999, targetGroups: ['Farmer', 'Any'], states: ['All'] },
-    details: 'PMFBY provides financial support to farmers for crop loss due to natural disasters. Premium: 1.5% Rabi, 2% Kharif, 5% commercial crops.',
+    details: 'PMFBY provides financial support for crop loss due to natural disasters. Premium: 1.5% Rabi, 2% Kharif, 5% commercial crops.',
     checklist: ['Must be a farmer (owner or tenant)', 'Sown the notified crop in notified area', 'Apply before the cut-off date for the season'],
     documents: ['Aadhaar Card', 'Land records (Khasra/Khatauni)', 'Sowing Certificate', 'Bank Passbook'],
     apply_url: 'https://pmfby.gov.in/'
@@ -151,7 +149,7 @@ const schemes = [
     category: 'Business',
     description: 'National database for unorganised workers with \u20b92 lakh accident insurance and welfare benefits.',
     eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
-    details: 'E-Shram registers workers in the unorganised sector and provides \u20b92 lakh accident insurance under PMSBY plus priority access to welfare schemes.',
+    details: 'E-Shram registers unorganised sector workers and provides \u20b92 lakh accident insurance plus priority access to welfare schemes.',
     checklist: ['Age 16-59 years', 'Working in unorganised sector', 'Not a member of EPFO/ESIC', 'Not an income tax payer'],
     documents: ['Aadhaar Card', 'Bank Account linked to Aadhaar', 'Mobile Number (linked to Aadhaar)'],
     apply_url: 'https://eshram.gov.in/'
@@ -163,7 +161,7 @@ const schemes = [
     description: 'Working capital loans starting at \u20b910,000 for street vendors affected by COVID-19.',
     eligibility: { maxIncome: 500000, targetGroups: ['Entrepreneur', 'Self-employed', 'Any'], states: ['All'] },
     details: 'PM SVANidhi provides collateral-free loans of \u20b910,000 (1st), \u20b920,000 (2nd), and \u20b950,000 (3rd). Timely repayment earns 7% interest subsidy.',
-    checklist: ['Must be a street vendor', 'Possess vending certificate/letter of recommendation from ULB', 'Working prior to March 24, 2020'],
+    checklist: ['Must be a street vendor', 'Possess vending certificate/letter from ULB', 'Working prior to March 24, 2020'],
     documents: ['Aadhaar Card', 'Vendor Certificate or ULB Letter', 'Bank Passbook', 'Passport-size Photo'],
     apply_url: 'https://pmsvanidhi.mohua.gov.in/'
   },
@@ -173,7 +171,7 @@ const schemes = [
     category: 'Housing',
     description: 'Tap water connection to every rural household in India under Har Ghar Jal.',
     eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
-    details: 'JJM provides functional household tap connections of 55 litres per person per day to every rural household. Apply through your Gram Panchayat.',
+    details: 'JJM provides functional household tap connections of 55 litres per person per day to every rural household.',
     checklist: ['Must be a rural household', 'No existing piped water connection', 'Indian citizen', 'Register through Gram Panchayat'],
     documents: ['Aadhaar Card', 'Address Proof', 'Ration Card'],
     apply_url: 'https://jaljeevanmission.gov.in/'
@@ -195,11 +193,9 @@ const schemes = [
     category: 'Health',
     description: 'Cash benefit of \u20b95,000 in instalments for pregnant & lactating mothers for their first child.',
     eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
-    details: 'PMMVY provides \u20b95,000 in three installments: \u20b91,000 on pregnancy registration, \u20b92,000 on ANC check-up, and \u20b92,000 after child birth registration.',
+    details: 'PMMVY provides \u20b95,000 in three installments: \u20b91,000 on pregnancy registration, \u20b92,000 on ANC check-up, and \u20b92,000 after birth registration.',
     checklist: ['Pregnant or lactating woman', 'First child only (for general category)', 'Age 19 years or above', 'Register at the nearest AWC/health facility'],
     documents: ['Aadhaar Card', 'MCP Card', 'Bank Passbook', 'Mobile Number'],
     apply_url: 'https://wcd.nic.in/schemes/pradhan-mantri-matru-vandana-yojana'
   }
 ];
-
-module.exports = { schemes };
