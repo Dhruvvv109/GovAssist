@@ -8,5 +8,5 @@ export const getSchemes = () =>
 export const checkEligibility = (profile) =>
   axios.post(`${API_BASE}/checkEligibility`, profile).then(r => r.data.data)
 
-export const sendChatMessage = (message, history) =>
-  axios.post(`${API_BASE}/chatbot`, { message, history }).then(r => r.data.reply)
+export const sendChatMessage = (message, history, lang = 'en') =>
+  axios.post(`${API_BASE}/chatbot`, { message, history, lang }).then(r => r.data.reply)

@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "setupProfile": "Setup Profile",
+    "checkEligibility": "Check Eligibility"
+  },
+  "hero": {
+    "badge": "🇮🇳 100% Free Government Resource",
+    "title": "Discover Government Schemes",
+    "titleHighlight": "Made For You",
+    "subtitle": "Stop missing out on benefits you deserve. Tell us about yourself and we'll find every scheme, subsidy, and benefit you're eligible for.",
+    "ctaPrimary": "Check Your Eligibility",
+    "ctaSecondary": "Browse All Schemes"
+  },
+  "stats": {
+    "activeSchemes": "Active Schemes",
+    "citizensHelped": "Citizens Helped",
+    "statesUTs": "States & UTs"
+  },
+  "features": {
+    "title": "Why GovAssist?",
+    "subtitle": "Simplifying government for every Indian citizen",
+    "instant": {
+      "title": "Instant Matching",
+      "desc": "AI matches you with relevant schemes in seconds based on your profile."
+    },
+    "secure": {
+      "title": "Trusted & Secure",
+      "desc": "All scheme data is sourced directly from official government portals."
+    },
+    "forAll": {
+      "title": "For Every Indian",
+      "desc": "From farmers to students, we cover schemes across all categories."
+    }
+  },
+  "cta": {
+    "title": "Ready to find your schemes?",
+    "subtitle": "Takes less than 2 minutes. No sign-up required.",
+    "button": "Get Started — It's Free"
+  },
+  "dashboard": {
+    "title": "Schemes For You 🎯",
+    "titleAll": "All Government Schemes",
+    "schemesFound": "{{count}} scheme found",
+    "schemesFound_other": "{{count}} schemes found",
+    "searchPlaceholder": "Search schemes...",
+    "noSchemes": "No schemes found",
+    "noSchemesHint": "Try changing the category or search term",
+    "categories": {
+      "all": "All",
+      "agriculture": "Agriculture",
+      "housing": "Housing",
+      "business": "Business",
+      "education": "Education",
+      "health": "Health"
+    }
+  },
+  "schemeCard": {
+    "checkEligibility": "Check Eligibility"
+  },
+  "schemeDetails": {
+    "back": "Back to Dashboard",
+    "about": "About this Scheme",
+    "eligibilityChecklist": "Eligibility Checklist",
+    "documentsRequired": "Documents Required",
+    "applyButton": "Apply on Official Portal",
+    "applyNote": "You'll be redirected to the official government website"
+  },
+  "profile": {
+    "step": "Step {{current}} of {{total}}",
+    "complete": "{{percent}}% complete",
+    "helpText": "Help us find the best schemes for you",
+    "back": "Back",
+    "continue": "Continue",
+    "submit": "Show My Schemes 🎉",
+    "loading": "Finding schemes...",
+    "steps": {
+      "age": "Your Age",
+      "income": "Annual Family Income (₹)",
+      "state": "Your State",
+      "category": "Social Category",
+      "occupation": "Primary Occupation"
+    }
+  },
+  "chatbot": {
+    "title": "GovAssist AI",
+    "status": "Online • Government Schemes Expert",
+    "greeting": "👋 Hi! I am GovAssist AI. I can help you find government schemes you are eligible for. Ask me anything!",
+    "placeholder": "Ask about any scheme...",
+    "error": "Sorry, I am having trouble connecting. Please try again.",
+    "quickReplies": {
+      "documents": "What documents do I need?",
+      "kisan": "Tell me about PM Kisan",
+      "mudra": "How to apply for MUDRA loan?",
+      "eligibility": "Check my eligibility"
+    }
+  },
+  "language": {
+    "toggle": "हिं",
+    "current": "EN"
+  }
+}

@@ -1,29 +1,36 @@
 import { useState, useRef, useEffect } from 'react'
 import { MessageCircle, X, Send, Bot, Loader2 } from 'lucide-react'
 import { sendChatMessage } from '../utils/api'
-
-const QUICK_REPLIES = [
-  'What documents do I need?',
-  'Tell me about PM Kisan',
-  'How to apply for MUDRA loan?',
-  'Check my eligibility',
-]
+import { useTranslation } from 'react-i18next'
 
 export default function Chatbot() {
+  const { t, i18n } = useTranslation()
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "👋 Hi! I'm GovAssist AI. I can help you find government schemes you're eligible for. Ask me anything!",
+      content: t('chatbot.greeting'),
     },
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const bottomRef = useRef(null)
 
+  // Reset greeting when language changes
+  useEffect(() => {
+    setMessages([{ role: 'assistant', content: t('chatbot.greeting') }])
+  }, [i18n.language])
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, open])
+
+  const quickReplies = [
+    t('chatbot.quickReplies.documents'),
+    t('chatbot.quickReplies.kisan'),
+    t('chatbot.quickReplies.mudra'),
+    t('chatbot.quickReplies.eligibility'),
+  ]
 
   const sendMessage = async (text) => {
     const userMsg = text || input.trim()
@@ -38,12 +45,13 @@ export default function Chatbot() {
       const history = newMessages
         .slice(1)
         .map(m => ({ role: m.role, content: m.content }))
-      const reply = await sendChatMessage(userMsg, history)
+      // Pass current language so backend can respond in the right language
+      const reply = await sendChatMessage(userMsg, history, i18n.language)
       setMessages(prev => [...prev, { role: 'assistant', content: reply }])
     } catch {
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'Sorry, I am having trouble connecting. Please try again.',
+        content: t('chatbot.error'),
       }])
     } finally {
       setLoading(false)
@@ -61,8 +69,8 @@ export default function Chatbot() {
               <Bot size={18} className="text-white" />
             </div>
             <div>
-              <p className="text-white font-semibold text-sm">GovAssist AI</p>
-              <p className="text-primary-100 text-xs">Online • Government Schemes Expert</p>
+              <p className="text-white font-semibold text-sm">{t('chatbot.title')}</p>
+              <p className="text-primary-100 text-xs">{t('chatbot.status')}</p>
             </div>
             <button
               onClick={() => setOpen(false)}
@@ -98,7 +106,7 @@ export default function Chatbot() {
           {/* Quick Reply Chips */}
           {messages.length <= 1 && (
             <div className="px-4 pb-2 flex flex-wrap gap-1.5">
-              {QUICK_REPLIES.map(q => (
+              {quickReplies.map(q => (
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
@@ -117,7 +125,7 @@ export default function Chatbot() {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && sendMessage()}
-              placeholder="Ask about any scheme..."
+              placeholder={t('chatbot.placeholder')}
               className="flex-1 text-sm px-3 py-2 rounded-xl border border-gray-200 focus:outline-none focus:border-primary-400 bg-gray-50"
             />
             <button

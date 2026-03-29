@@ -1,20 +1,22 @@
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, Shield, Zap, Users, CheckCircle } from 'lucide-react'
-
-const stats = [
-  { label: 'Active Schemes', value: '500+' },
-  { label: 'Citizens Helped', value: '2M+' },
-  { label: 'States & UTs', value: '36' },
-]
-
-const features = [
-  { icon: Zap, title: 'Instant Matching', desc: 'AI matches you with relevant schemes in seconds based on your profile.' },
-  { icon: Shield, title: 'Trusted & Secure', desc: 'All scheme data is sourced directly from official government portals.' },
-  { icon: Users, title: 'For Every Indian', desc: 'From farmers to students, we cover schemes across all categories.' },
-]
+import { useTranslation } from 'react-i18next'
 
 export default function Landing() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
+
+  const stats = [
+    { label: t('stats.activeSchemes'), value: '500+' },
+    { label: t('stats.citizensHelped'), value: '2M+' },
+    { label: t('stats.statesUTs'), value: '36' },
+  ]
+
+  const features = [
+    { icon: Zap, title: t('features.instant.title'), desc: t('features.instant.desc') },
+    { icon: Shield, title: t('features.secure.title'), desc: t('features.secure.desc') },
+    { icon: Users, title: t('features.forAll.title'), desc: t('features.forAll.desc') },
+  ]
 
   return (
     <div className="flex flex-col">
@@ -26,27 +28,27 @@ export default function Landing() {
         </div>
         <div className="relative max-w-3xl mx-auto text-center">
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/15 border border-white/20 px-3 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-            🇮🇳 100% Free Government Resource
+            {t('hero.badge')}
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5 tracking-tight">
-            Discover Government Schemes
-            <span className="block text-primary-200">Made For You</span>
+            {t('hero.title')}
+            <span className="block text-primary-200">{t('hero.titleHighlight')}</span>
           </h1>
           <p className="text-base sm:text-lg text-primary-100 max-w-xl mx-auto mb-8 leading-relaxed">
-            Stop missing out on benefits you deserve. Tell us about yourself and we'll find every scheme, subsidy, and benefit you're eligible for.
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => navigate('/setup')}
               className="flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-primary-700 font-bold rounded-xl hover:bg-primary-50 transition-all duration-200 shadow-lg text-sm"
             >
-              Check Your Eligibility <ArrowRight size={17} />
+              {t('hero.ctaPrimary')} <ArrowRight size={17} />
             </button>
             <button
               onClick={() => navigate('/dashboard')}
               className="flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-xl transition-all duration-200 text-sm"
             >
-              Browse All Schemes
+              {t('hero.ctaSecondary')}
             </button>
           </div>
         </div>
@@ -68,8 +70,8 @@ export default function Landing() {
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Why GovAssist?</h2>
-            <p className="text-gray-500 mt-2 text-base">Simplifying government for every Indian citizen</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{t('features.title')}</h2>
+            <p className="text-gray-500 mt-2 text-base">{t('features.subtitle')}</p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
             {features.map(f => (
@@ -89,13 +91,13 @@ export default function Landing() {
       <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto bg-primary-50 border border-primary-100 rounded-2xl p-8 text-center">
           <CheckCircle size={32} className="text-primary-600 mx-auto mb-3" />
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Ready to find your schemes?</h2>
-          <p className="text-gray-500 text-sm mb-5">Takes less than 2 minutes. No sign-up required.</p>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">{t('cta.title')}</h2>
+          <p className="text-gray-500 text-sm mb-5">{t('cta.subtitle')}</p>
           <button
             onClick={() => navigate('/setup')}
             className="px-7 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors text-sm shadow-md"
           >
-            Get Started — It's Free
+            {t('cta.button')}
           </button>
         </div>
       </section>

@@ -1,15 +1,25 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Landmark } from 'lucide-react'
+import { Menu, X, Landmark, Globe } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const { t, i18n } = useTranslation()
+
+  const isHindi = i18n.language === 'hi'
+
+  const toggleLanguage = () => {
+    const next = isHindi ? 'en' : 'hi'
+    i18n.changeLanguage(next)
+    localStorage.setItem('govassist_lang', next)
+  }
 
   const navLinks = [
-    { label: 'Home', to: '/' },
-    { label: 'Dashboard', to: '/dashboard' },
-    { label: 'Setup Profile', to: '/setup' },
+    { label: t('nav.home'), to: '/' },
+    { label: t('nav.dashboard'), to: '/dashboard' },
+    { label: t('nav.setupProfile'), to: '/setup' },
   ]
 
   const isActive = (path) => location.pathname === path
@@ -45,19 +55,38 @@ export default function Navbar() {
             ))}
             <Link
               to="/setup"
-              className="ml-3 px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-sm"
+              className="ml-2 px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-sm"
             >
-              Check Eligibility
+              {t('nav.checkEligibility')}
             </Link>
+
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              title="Switch language"
+              className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 hover:border-primary-300 hover:text-primary-700 transition-all"
+            >
+              <Globe size={14} />
+              <span>{isHindi ? 'EN' : 'हिं'}</span>
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 text-gray-600"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile: Language toggle + Hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-semibold text-gray-600 hover:bg-gray-50"
+            >
+              <Globe size={12} />
+              {isHindi ? 'EN' : 'हिं'}
+            </button>
+            <button
+              className="p-2 rounded-lg hover:bg-gray-100 text-gray-600"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Dropdown */}
@@ -82,7 +111,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="block mx-4 py-2.5 bg-primary-600 text-white text-sm font-semibold rounded-lg text-center hover:bg-primary-700 transition-colors"
             >
-              Check Eligibility
+              {t('nav.checkEligibility')}
             </Link>
           </div>
         )}

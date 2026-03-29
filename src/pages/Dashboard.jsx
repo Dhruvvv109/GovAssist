@@ -3,18 +3,27 @@ import { useLocation } from 'react-router-dom'
 import { Search, SlidersHorizontal, LayoutGrid } from 'lucide-react'
 import SchemeCard from '../components/SchemeCard'
 import { getSchemes } from '../utils/api'
-
-const CATEGORIES = ['All', 'Agriculture', 'Housing', 'Business', 'Education', 'Health']
+import { useTranslation } from 'react-i18next'
 
 export default function Dashboard() {
   const location = useLocation()
   const passedSchemes = location.state?.schemes
   const profile = location.state?.profile
+  const { t } = useTranslation()
 
   const [schemes, setSchemes] = useState([])
   const [loading, setLoading] = useState(true)
   const [activeCategory, setActiveCategory] = useState('All')
   const [search, setSearch] = useState('')
+
+  const CATEGORIES = [
+    { key: 'All', label: t('dashboard.categories.all') },
+    { key: 'Agriculture', label: t('dashboard.categories.agriculture') },
+    { key: 'Housing', label: t('dashboard.categories.housing') },
+    { key: 'Business', label: t('dashboard.categories.business') },
+    { key: 'Education', label: t('dashboard.categories.education') },
+    { key: 'Health', label: t('dashboard.categories.health') },
+  ]
 
   useEffect(() => {
     if (passedSchemes) {
@@ -40,10 +49,13 @@ export default function Dashboard() {
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900">
-          {profile ? `Schemes For You 🎯` : 'All Government Schemes'}
+          {profile ? t('dashboard.title') : t('dashboard.titleAll')}
         </h1>
         <p className="text-gray-500 text-sm mt-1">
-          {loading ? 'Loading...' : `${filtered.length} scheme${filtered.length !== 1 ? 's' : ''} found`}
+          {loading
+            ? 'Loading...'
+            : t('dashboard.schemesFound', { count: filtered.length })
+          }
           {profile?.state ? ` • ${profile.state}` : ''}
         </p>
       </div>
@@ -56,7 +68,7 @@ export default function Dashboard() {
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search schemes..."
+            placeholder={t('dashboard.searchPlaceholder')}
             className="w-full pl-9 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-50"
           />
         </div>
@@ -64,15 +76,15 @@ export default function Dashboard() {
           <SlidersHorizontal size={14} className="ml-1 text-gray-400 shrink-0" />
           {CATEGORIES.map(cat => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${
-                activeCategory === cat
+                activeCategory === cat.key
                   ? 'bg-primary-600 text-white shadow-sm'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -88,8 +100,8 @@ export default function Dashboard() {
       ) : filtered.length === 0 ? (
         <div className="text-center py-16">
           <LayoutGrid size={40} className="mx-auto text-gray-300 mb-3" />
-          <p className="text-gray-500 font-medium">No schemes found</p>
-          <p className="text-gray-400 text-sm mt-1">Try changing the category or search term</p>
+          <p className="text-gray-500 font-medium">{t('dashboard.noSchemes')}</p>
+          <p className="text-gray-400 text-sm mt-1">{t('dashboard.noSchemesHint')}</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
