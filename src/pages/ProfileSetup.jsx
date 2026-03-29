@@ -38,9 +38,9 @@ export default function ProfileSetup() {
         body: JSON.stringify(profile),
       })
       const data = await res.json()
-      navigate('/dashboard', { state: { schemes: data.data, profile } })
+      navigate('/schemes', { state: { schemes: data.data, profile } })
     } catch {
-      navigate('/dashboard', { state: { profile } })
+      navigate('/schemes', { state: { profile } })
     } finally {
       setLoading(false)
     }

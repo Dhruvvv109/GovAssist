@@ -18,6 +18,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t('nav.home'), to: '/' },
+    { label: t('nav.schemes'), to: '/schemes' },
     { label: t('nav.dashboard'), to: '/dashboard' },
     { label: t('nav.setupProfile'), to: '/setup' },
   ]

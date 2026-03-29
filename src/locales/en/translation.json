@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "schemes": "Schemes",
     "dashboard": "Dashboard",
     "setupProfile": "Setup Profile",
     "checkEligibility": "Check Eligibility"

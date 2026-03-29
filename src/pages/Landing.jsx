@@ -45,7 +45,7 @@ export default function Landing() {
               {t('hero.ctaPrimary')} <ArrowRight size={17} />
             </button>
             <button
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate('/schemes')}
               className="flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-xl transition-all duration-200 text-sm"
             >
               {t('hero.ctaSecondary')}

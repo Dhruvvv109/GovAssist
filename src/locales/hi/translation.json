@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "होम",
+    "schemes": "योजनाएं",
     "dashboard": "डैशबोर्ड",
     "setupProfile": "प्रोफ़ाइल बनाएं",
     "checkEligibility": "पात्रता जांचें"

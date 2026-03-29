@@ -10,3 +10,7 @@ export const checkEligibility = (profile) =>
 
 export const sendChatMessage = (message, history, lang = 'en') =>
   axios.post(`${API_BASE}/chatbot`, { message, history, lang }).then(r => r.data.reply)
+
+export const getAnalytics = () =>
+  axios.get(`${API_BASE}/analytics`).then(r => r.data.data)
+

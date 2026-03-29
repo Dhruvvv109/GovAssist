@@ -37,8 +37,8 @@ export default function SchemeDetails() {
     return (
       <div className="text-center py-24">
         <p className="text-gray-500 text-lg">Scheme not found.</p>
-        <button onClick={() => navigate('/dashboard')} className="mt-4 text-primary-600 font-medium">
-          ← Back to Dashboard
+        <button onClick={() => navigate('/schemes')} className="mt-4 text-primary-600 font-medium">
+          ← Back to Schemes
         </button>
       </div>
     )

@@ -4,6 +4,7 @@ import Chatbot from './components/Chatbot'
 import Landing from './pages/Landing'
 import ProfileSetup from './pages/ProfileSetup'
 import Dashboard from './pages/Dashboard'
+import Schemes from './pages/Schemes'
 import SchemeDetails from './pages/SchemeDetails'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/setup" element={<ProfileSetup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/schemes" element={<Schemes />} />
           <Route path="/scheme/:id" element={<SchemeDetails />} />
         </Routes>
         <Chatbot />

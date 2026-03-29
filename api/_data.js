@@ -190,12 +190,67 @@ export const schemes = [
   {
     id: '18',
     name: 'PM Matru Vandana Yojana',
-    category: 'Health',
+    category: 'Women & Child',
     description: 'Cash benefit of \u20b95,000 in instalments for pregnant & lactating mothers for their first child.',
     eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
     details: 'PMMVY provides \u20b95,000 in three installments: \u20b91,000 on pregnancy registration, \u20b92,000 on ANC check-up, and \u20b92,000 after birth registration.',
     checklist: ['Pregnant or lactating woman', 'First child only (for general category)', 'Age 19 years or above', 'Register at the nearest AWC/health facility'],
     documents: ['Aadhaar Card', 'MCP Card', 'Bank Passbook', 'Mobile Number'],
     apply_url: 'https://wcd.nic.in/schemes/pradhan-mantri-matru-vandana-yojana'
+  },
+  {
+    id: '19',
+    name: 'Sukanya Samriddhi Yojana',
+    category: 'Women & Child',
+    description: 'High-interest savings scheme for girl child with 8.2% p.a. and full tax exemption.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
+    details: 'SSY offers one of the highest interest rates among small savings schemes. Deposits between \u20b9250 and \u20b91.5 lakh/year. Matures when girl turns 21.',
+    checklist: ['Girl child below 10 years', 'Indian citizen', 'One account per girl child', 'Maximum two accounts per family'],
+    documents: ['Birth Certificate of Girl Child', 'Aadhaar of Parent/Guardian', 'Address Proof', 'Passport-size Photo'],
+    apply_url: 'https://www.nsiindia.gov.in/'
+  },
+  {
+    id: '20',
+    name: 'PM Jeevan Jyoti Bima Yojana',
+    category: 'Finance',
+    description: 'Life insurance cover of \u20b92 lakh for just \u20b9436/year for citizens aged 18\u201350.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
+    details: 'PMJJBY provides renewable one-year life insurance cover of \u20b92 lakh on death due to any cause. Premium is auto-debited from bank account.',
+    checklist: ['Age 18-50 years', 'Active savings bank account', 'Consent for auto-debit of \u20b9436/year', 'Aadhaar-linked bank account preferred'],
+    documents: ['Aadhaar Card', 'Bank Passbook', 'Mobile Number'],
+    apply_url: 'https://jansuraksha.gov.in/'
+  },
+  {
+    id: '21',
+    name: 'Kisan Credit Card (KCC)',
+    category: 'Finance',
+    description: 'Flexible credit up to \u20b93 lakh at 4% interest for farmers for crop and allied activities.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Farmer', 'Any'], states: ['All'] },
+    details: 'KCC provides short-term credit for crop cultivation, post-harvest expenses, and allied activities. Interest subvention brings effective rate to 4% for timely repayment.',
+    checklist: ['Must be a farmer (owner/tenant/sharecropper)', 'Valid land records', 'No existing KCC from another bank', 'Age 18-75 years'],
+    documents: ['Aadhaar Card', 'Land Records', 'Bank Passbook', 'Passport-size Photo'],
+    apply_url: 'https://www.nabard.org/'
+  },
+  {
+    id: '22',
+    name: 'Poshan Abhiyaan',
+    category: 'Women & Child',
+    description: 'Nutrition mission to reduce stunting, wasting and anaemia among children under 6 and pregnant women.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['All'] },
+    details: 'POSHAN 2.0 targets reduction of stunting by 2%, wasting by 2%, and anaemia by 3% per year. Provides supplementary nutrition through Anganwadi centres.',
+    checklist: ['Children aged 0-6 years', 'Pregnant and lactating mothers', 'Adolescent girls (11-14 years)', 'Register at nearest Anganwadi centre'],
+    documents: ['Aadhaar Card', 'Birth Certificate (for children)', 'MCP Card (for mothers)'],
+    apply_url: 'https://poshanabhiyaan.gov.in/'
+  },
+  {
+    id: '23',
+    name: 'Stand Up India',
+    category: 'Finance',
+    description: 'Bank loans between \u20b910 lakh and \u20b91 crore for SC/ST and women entrepreneurs.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Entrepreneur', 'Any'], states: ['All'] },
+    details: 'Stand Up India facilitates bank loans for setting up greenfield enterprises in manufacturing, services, or trading sector for SC/ST and women borrowers.',
+    checklist: ['SC/ST or woman entrepreneur', 'Age 18+ years', 'First-time enterprise (greenfield)', 'Not a defaulter with any bank/financial institution'],
+    documents: ['Aadhaar & PAN Card', 'Business Plan', 'Caste Certificate (for SC/ST)', 'Bank Statement (6 months)'],
+    apply_url: 'https://www.standupmitra.in/'
   }
 ];
