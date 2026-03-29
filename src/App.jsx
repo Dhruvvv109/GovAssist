@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+﻿import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Chatbot from './components/Chatbot'
 import Landing from './pages/Landing'
@@ -6,6 +6,7 @@ import ProfileSetup from './pages/ProfileSetup'
 import Dashboard from './pages/Dashboard'
 import Schemes from './pages/Schemes'
 import SchemeDetails from './pages/SchemeDetails'
+import Deadlines from './pages/Deadlines'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/schemes" element={<Schemes />} />
           <Route path="/scheme/:id" element={<SchemeDetails />} />
+          <Route path="/deadlines" element={<Deadlines />} />
         </Routes>
         <Chatbot />
       </div>
