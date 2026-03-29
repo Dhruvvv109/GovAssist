@@ -208,7 +208,7 @@ export default function ProfileSetup() {
         {/* Card */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
           <h2 className="text-xl font-bold text-gray-900 mb-1">{current.title}</h2>
-          <p className="text-sm text-gray-400 mb-6">Help us find the best schemes for you</p>
+          <p className="text-sm text-gray-400 mb-6">Tell us about yourself to find matching schemes</p>
 
           {current.render()}
 
