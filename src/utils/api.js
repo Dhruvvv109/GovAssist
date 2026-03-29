@@ -14,3 +14,6 @@ export const sendChatMessage = (message, history, lang = 'en') =>
 export const getAnalytics = () =>
   axios.get(`${API_BASE}/analytics`).then(r => r.data.data)
 
+export const getDeadlines = () =>
+  axios.get(`${API_BASE}/deadlines`).then(r => r.data.data)
+

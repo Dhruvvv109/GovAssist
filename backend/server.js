@@ -215,6 +215,21 @@ app.get('/api/schemes', (req, res) => {
   res.json({ success: true, data: schemes });
 });
 
+// GET deadlines
+app.get('/api/deadlines', (req, res) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const data = schemes
+    .filter(s => s.deadline)
+    .map(s => {
+      const dl = new Date(s.deadline);
+      const daysLeft = Math.ceil((dl - today) / (1000 * 60 * 60 * 24));
+      return { id: s.id, name: s.name, category: s.category, deadline: s.deadline, daysLeft, apply_url: s.apply_url };
+    })
+    .sort((a, b) => a.daysLeft - b.daysLeft);
+  res.json({ success: true, data });
+});
+
 // GET analytics data
 app.get('/api/analytics', (req, res) => {
   const CATEGORIES = ['Health', 'Education', 'Agriculture', 'Housing', 'Women & Child', 'Finance'];
