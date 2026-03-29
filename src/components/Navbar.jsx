@@ -1,6 +1,6 @@
-﻿import { useState } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Landmark, Globe } from 'lucide-react'
+import { Menu, X, Landmark, Globe, Download } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 export default function Navbar() {
@@ -8,6 +8,27 @@ export default function Navbar() {
   const location = useLocation()
   const { t, i18n } = useTranslation()
   const isHindi = i18n.language === 'hi'
+  const [installPrompt, setInstallPrompt] = useState(null)
+  const [installed, setInstalled] = useState(false)
+
+  useEffect(() => {
+    // Check if already running as installed PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setInstalled(true)
+      return
+    }
+    const handler = (e) => { e.preventDefault(); setInstallPrompt(e) }
+    window.addEventListener('beforeinstallprompt', handler)
+    window.addEventListener('appinstalled', () => { setInstalled(true); setInstallPrompt(null) })
+    return () => window.removeEventListener('beforeinstallprompt', handler)
+  }, [])
+
+  const handleInstall = async () => {
+    if (!installPrompt) return
+    installPrompt.prompt()
+    const { outcome } = await installPrompt.userChoice
+    if (outcome === 'accepted') { setInstalled(true); setInstallPrompt(null) }
+  }
 
   const toggleLanguage = () => {
     const next = isHindi ? 'en' : 'hi'
@@ -51,6 +72,13 @@ export default function Navbar() {
               <Globe size={14} />
               <span>{isHindi ? 'EN' : 'हिं'}</span>
             </button>
+            {installPrompt && !installed && (
+              <button onClick={handleInstall}
+                className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-lg border border-primary-200 bg-primary-50 text-sm font-semibold text-primary-700 hover:bg-primary-100 transition-all">
+                <Download size={14} />
+                Install App
+              </button>
+            )}
           </div>
 
           <div className="md:hidden flex items-center gap-2">
