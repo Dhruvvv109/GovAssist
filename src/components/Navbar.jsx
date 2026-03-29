@@ -64,9 +64,6 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link to="/setup" className="ml-2 px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors shadow-sm">
-              {t('nav.checkEligibility')}
-            </Link>
             <button onClick={toggleLanguage} title="Switch language"
               className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 hover:border-primary-300 hover:text-primary-700 transition-all">
               <Globe size={14} />
@@ -101,10 +98,6 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link to="/setup" onClick={() => setOpen(false)}
-              className="block mx-4 py-2.5 bg-primary-600 text-white text-sm font-semibold rounded-lg text-center hover:bg-primary-700 transition-colors">
-              {t('nav.checkEligibility')}
-            </Link>
           </div>
         )}
       </div>
