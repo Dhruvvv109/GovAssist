@@ -275,7 +275,7 @@ export const schemes = [
     checklist: ['SC/ST or woman entrepreneur', 'Age 18+ years', 'First-time enterprise (greenfield)', 'Not a defaulter with any bank/financial institution'],
     documents: ['Aadhaar & PAN Card', 'Business Plan', 'Caste Certificate (for SC/ST)', 'Bank Statement (6 months)'],
     apply_url: 'https://www.standupmitra.in/'
-  }
+  },
   // ── Rajasthan State Schemes ────────────────────────────────────────────────
   {
     id: 'rj1',
