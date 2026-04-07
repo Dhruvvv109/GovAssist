@@ -6,7 +6,14 @@ function translate(scheme, lang) {
   if (lang !== 'hi') return scheme;
   const t = hiSchemes[scheme.id];
   if (!t) return scheme;
-  return { ...scheme, name: t.name, description: t.description, details: t.details || scheme.details };
+  return {
+    ...scheme,
+    name: t.name || scheme.name,
+    description: t.description || scheme.description,
+    details: t.details || scheme.details,
+    checklist: t.checklist || scheme.checklist,
+    documents: t.documents || scheme.documents,
+  };
 }
 
 export default function handler(req, res) {
