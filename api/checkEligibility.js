@@ -1,4 +1,5 @@
 ﻿// Vercel Serverless Function: POST /api/checkEligibility
+// rebuilt: 2026-04-07 13:57
 import { schemes } from './_data.js';
 
 export default function handler(req, res) {

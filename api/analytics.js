@@ -1,4 +1,5 @@
 ﻿// Vercel Serverless Function: GET /api/analytics
+// rebuilt: 2026-04-07 13:57
 // All data derived from actual schemes in _data.js
 import { schemes } from './_data.js';
 

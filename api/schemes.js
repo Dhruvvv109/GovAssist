@@ -1,4 +1,5 @@
 ﻿// Vercel Serverless Function: GET /api/schemes
+// rebuilt: 2026-04-07 13:57
 import { schemes } from './_data.js';
 
 export default function handler(req, res) {
