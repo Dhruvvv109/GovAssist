@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Search, SlidersHorizontal, LayoutGrid } from 'lucide-react'
 import SchemeCard from '../components/SchemeCard'
@@ -9,7 +9,7 @@ export default function Dashboard() {
   const location = useLocation()
   const passedSchemes = location.state?.schemes
   const profile = location.state?.profile
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const [schemes, setSchemes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -30,12 +30,13 @@ export default function Dashboard() {
       setSchemes(passedSchemes)
       setLoading(false)
     } else {
+      setLoading(true)
       getSchemes().then(data => {
         setSchemes(data)
         setLoading(false)
       }).catch(() => setLoading(false))
     }
-  }, [])
+  }, [i18n.language])
 
   const filtered = schemes.filter(s => {
     const matchCat = activeCategory === 'All' || s.category === activeCategory
@@ -56,7 +57,7 @@ export default function Dashboard() {
             ? 'Loading...'
             : t('dashboard.schemesFound', { count: filtered.length })
           }
-          {profile?.state ? ` • ${profile.state}` : ''}
+          {profile?.state ? ` â€¢ ${profile.state}` : ''}
         </p>
       </div>
 
