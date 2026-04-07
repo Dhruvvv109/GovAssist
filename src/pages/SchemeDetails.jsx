@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, CheckCircle2, FileText, ExternalLink, Tag } from 'lucide-react'
 import { getSchemes } from '../utils/api'
+import { useTranslation } from 'react-i18next'
 
 const categoryColors = {
   Agriculture: 'bg-green-100 text-green-700',
@@ -14,6 +15,7 @@ const categoryColors = {
 export default function SchemeDetails() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [scheme, setScheme] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -65,14 +67,14 @@ export default function SchemeDetails() {
 
       {/* About */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-4">
-        <h2 className="font-bold text-gray-900 text-base mb-3">About this Scheme</h2>
+        <h2 className="font-bold text-gray-900 text-base mb-3">{t('schemeDetails.about')}</h2>
         <p className="text-gray-600 text-sm leading-relaxed">{scheme.details}</p>
       </div>
 
       {/* Eligibility Checklist */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-4">
         <h2 className="font-bold text-gray-900 text-base mb-4 flex items-center gap-2">
-          <CheckCircle2 size={18} className="text-primary-600" /> Eligibility Checklist
+          <CheckCircle2 size={18} className="text-primary-600" /> {t('schemeDetails.eligibilityChecklist')}
         </h2>
         <ul className="space-y-3">
           {scheme.checklist.map((item, i) => (
@@ -89,7 +91,7 @@ export default function SchemeDetails() {
       {/* Documents Required */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-6">
         <h2 className="font-bold text-gray-900 text-base mb-4 flex items-center gap-2">
-          <FileText size={18} className="text-primary-600" /> Documents Required
+          <FileText size={18} className="text-primary-600" /> {t('schemeDetails.documentsRequired')}
         </h2>
         <div className="grid grid-cols-2 gap-2">
           {scheme.documents.map((doc, i) => (
