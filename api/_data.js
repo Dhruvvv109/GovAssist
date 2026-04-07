@@ -276,4 +276,101 @@ export const schemes = [
     documents: ['Aadhaar & PAN Card', 'Business Plan', 'Caste Certificate (for SC/ST)', 'Bank Statement (6 months)'],
     apply_url: 'https://www.standupmitra.in/'
   }
+  // ── Rajasthan State Schemes ────────────────────────────────────────────────
+  {
+    id: 'rj1',
+    name: 'Mukhyamantri Chiranjeevi Swasthya Bima Yojana',
+    category: 'Health',
+    deadline: '2025-12-31',
+    description: 'Free health insurance up to \u20b925 lakh per year for every family in Rajasthan.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['Rajasthan'] },
+    details: 'Rajasthan government provides cashless treatment up to \u20b925 lakh/year at empanelled hospitals. Covers 1,576+ medical packages including surgery, ICU, and OPD.',
+    checklist: ['Permanent resident of Rajasthan', 'Jan Aadhaar card required', 'Register at nearest e-Mitra kiosk', 'All families eligible regardless of income'],
+    documents: ['Jan Aadhaar Card', 'Aadhaar Card', 'Residence Proof'],
+    apply_url: 'https://chiranjeevi.rajasthan.gov.in/'
+  },
+  {
+    id: 'rj2',
+    name: 'Rajasthan Kisan Karj Mafi Yojana',
+    category: 'Agriculture',
+    deadline: '2025-12-31',
+    description: 'Loan waiver up to \u20b92 lakh for small and marginal farmers of Rajasthan.',
+    eligibility: { maxIncome: 200000, targetGroups: ['Farmer', 'Any'], states: ['Rajasthan'] },
+    details: 'Rajasthan government waives crop loans up to \u20b92 lakh for small and marginal farmers who have taken loans from cooperative banks and land development banks.',
+    checklist: ['Small or marginal farmer in Rajasthan', 'Loan taken from cooperative/land development bank', 'Land holding below 2 hectares', 'Rajasthan domicile'],
+    documents: ['Jan Aadhaar Card', 'Land Records (Khasra/Khatauni)', 'Bank Loan Documents', 'Aadhaar Card'],
+    apply_url: 'https://rajkisan.rajasthan.gov.in/'
+  },
+  {
+    id: 'rj3',
+    name: 'Indira Gandhi Shahri Rozgar Guarantee Yojana',
+    category: 'Business',
+    deadline: '2025-12-31',
+    description: 'Guaranteed 100 days of employment per year for urban households in Rajasthan.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Unemployed', 'Any'], states: ['Rajasthan'] },
+    details: 'Urban MGNREGA for Rajasthan — guarantees 100 days of wage employment to adult members of urban households willing to do unskilled manual work at \u20b9259/day.',
+    checklist: ['Resident of urban area in Rajasthan', 'Age 18 years or above', 'Willing to do unskilled manual work', 'Jan Aadhaar card required'],
+    documents: ['Jan Aadhaar Card', 'Aadhaar Card', 'Urban Residence Proof', 'Bank Passbook'],
+    apply_url: 'https://irgyurban.rajasthan.gov.in/'
+  },
+  {
+    id: 'rj4',
+    name: 'Rajasthan Free Scooty Yojana (Devnarayan / Kali Bai)',
+    category: 'Education',
+    deadline: '2025-09-30',
+    description: 'Free scooty for meritorious girl students from SC/ST/OBC/Minority communities in Rajasthan.',
+    eligibility: { maxIncome: 250000, targetGroups: ['Student', 'Any'], states: ['Rajasthan'] },
+    details: 'Rajasthan government distributes free scooties to girl students who scored 65%+ in Class 12 and are enrolled in college. Covers SC/ST/OBC/Minority/EWS categories.',
+    checklist: ['Girl student in Rajasthan', 'Scored 65% or above in Class 12', 'Enrolled in college/university', 'Family income below \u20b92.5 lakh/year', 'SC/ST/OBC/Minority/EWS category'],
+    documents: ['Class 12 Marksheet', 'College Enrollment Certificate', 'Caste Certificate', 'Income Certificate', 'Jan Aadhaar Card', 'Aadhaar Card'],
+    apply_url: 'https://hte.rajasthan.gov.in/'
+  },
+  {
+    id: 'rj5',
+    name: 'Palanhar Yojana Rajasthan',
+    category: 'Women & Child',
+    deadline: '2025-12-31',
+    description: 'Monthly financial support for orphaned and destitute children in Rajasthan up to age 18.',
+    eligibility: { maxIncome: 120000, targetGroups: ['Any'], states: ['Rajasthan'] },
+    details: 'Rajasthan provides \u20b9500/month for children aged 0-6 years and \u20b91,000/month for children aged 6-18 years who are orphaned, have disabled parents, or are from destitute families.',
+    checklist: ['Child resident of Rajasthan', 'Orphaned or parent disabled/imprisoned/destitute', 'Age below 18 years', 'Family income below \u20b91.2 lakh/year', 'Palanhar (guardian) must be from same community'],
+    documents: ['Birth Certificate', 'Aadhaar Card', 'Jan Aadhaar Card', 'Proof of orphan/destitute status', 'Bank Passbook of Palanhar'],
+    apply_url: 'https://sje.rajasthan.gov.in/schemes/Palanhar.html'
+  },
+  {
+    id: 'rj6',
+    name: 'Rajasthan Gramin Olympic Khel',
+    category: 'Education',
+    deadline: '2025-08-31',
+    description: 'State-funded rural sports competition for youth in Rajasthan across 8 sports disciplines.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Student', 'Any'], states: ['Rajasthan'] },
+    details: 'Rajasthan government organizes rural Olympics at gram panchayat, block, district and state levels. Covers kabaddi, volleyball, hockey, football, athletics, kho-kho, tennis ball cricket, and shooting ball.',
+    checklist: ['Resident of rural Rajasthan', 'Age 6 years and above', 'Register through gram panchayat', 'No prior professional sports contract'],
+    documents: ['Aadhaar Card', 'Jan Aadhaar Card', 'Age Proof', 'Residence Certificate'],
+    apply_url: 'https://rajasthanolympic.rajasthan.gov.in/'
+  },
+  {
+    id: 'rj7',
+    name: 'Mukhyamantri Rajshri Yojana',
+    category: 'Women & Child',
+    deadline: '2025-12-31',
+    description: '\u20b950,000 financial benefit in 6 instalments for girl children born in Rajasthan after June 2016.',
+    eligibility: { maxIncome: 999999999, targetGroups: ['Any'], states: ['Rajasthan'] },
+    details: 'Rajasthan provides \u20b950,000 total in 6 instalments: \u20b92,500 at birth, \u20b92,500 at 1 year, \u20b94,000 at Class 1, \u20b95,000 at Class 6, \u20b911,000 at Class 10, \u20b925,000 at Class 12.',
+    checklist: ['Girl child born on or after 1 June 2016', 'Birth in government hospital', 'Rajasthan domicile', 'Jan Aadhaar card of mother required'],
+    documents: ['Birth Certificate', 'Jan Aadhaar Card of Mother', 'Aadhaar Card', 'Bank Passbook', 'School Enrollment Certificate (for later instalments)'],
+    apply_url: 'https://wcd.rajasthan.gov.in/'
+  },
+  {
+    id: 'rj8',
+    name: 'Rajasthan Vishwakarma Kamgar Kalyan Yojana',
+    category: 'Business',
+    deadline: '2025-12-31',
+    description: 'Financial assistance up to \u20b95,000 for tools and equipment to artisans and self-employed workers in Rajasthan.',
+    eligibility: { maxIncome: 200000, targetGroups: ['Self-employed', 'Entrepreneur', 'Any'], states: ['Rajasthan'] },
+    details: 'Rajasthan provides \u20b95,000 for purchase of tools/equipment to artisans, handicraft workers, and self-employed individuals from SC/ST/OBC/Minority/EWS categories.',
+    checklist: ['Rajasthan resident', 'Artisan or self-employed worker', 'Age 18-40 years', 'SC/ST/OBC/Minority/EWS category', 'Family income below \u20b92 lakh/year'],
+    documents: ['Jan Aadhaar Card', 'Aadhaar Card', 'Caste Certificate', 'Income Certificate', 'Bank Passbook', 'Proof of occupation'],
+    apply_url: 'https://labour.rajasthan.gov.in/'
+  }
 ];
