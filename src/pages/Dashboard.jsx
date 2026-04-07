@@ -6,6 +6,7 @@ import {
 } from 'recharts'
 import { LayoutDashboard, TrendingUp, Map, Users, Layers, Calendar, IndianRupee } from 'lucide-react'
 import { getAnalytics } from '../utils/api'
+import { useTranslation } from 'react-i18next'
 
 
 // ── Color palettes ─────────────────────────────────────────────────────────
@@ -70,6 +71,7 @@ export default function Dashboard() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [activePie, setActivePie] = useState(null)
+  const { t } = useTranslation()
 
   useEffect(() => {
     getAnalytics()
@@ -82,7 +84,7 @@ export default function Dashboard() {
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-          <p className="text-gray-400 text-sm">Loading analytics...</p>
+          <p className="text-gray-400 text-sm">{t('analytics.loading')}</p>
         </div>
       </div>
     )
@@ -91,7 +93,7 @@ export default function Dashboard() {
   if (!data) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <p className="text-gray-400">Failed to load analytics data.</p>
+        <p className="text-gray-400">{t('analytics.failed')}</p>
       </div>
     )
   }
@@ -108,19 +110,19 @@ export default function Dashboard() {
             <div className="w-9 h-9 bg-green-500/10 rounded-xl flex items-center justify-center">
               <LayoutDashboard size={18} className="text-green-400" />
             </div>
-            <h1 className="text-2xl font-extrabold text-white">Analytics Dashboard</h1>
+            <h1 className="text-2xl font-extrabold text-white">{t('analytics.title')}</h1>
           </div>
-          <p className="text-gray-500 text-sm ml-12">Live insights across {data?.summary?.totalSchemes || 23} government schemes</p>
+          <p className="text-gray-500 text-sm ml-12">{t('analytics.subtitle', { count: data?.summary?.totalSchemes || 52 })}</p>
         </div>
 
         {/* ── Stat Cards ─────────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
-          <StatCard icon={Layers}       label="Total Schemes"      value={summary.totalSchemes}      sub="Central govt."        color="bg-green-500/20"  />
-          <StatCard icon={LayoutDashboard} label="Categories"      value={summary.totalCategories}   sub="Sectors covered"      color="bg-blue-500/20"   />
-          <StatCard icon={Map}           label="States & UTs"       value={summary.statesCovered}     sub="Pan India"            color="bg-purple-500/20" />
-          <StatCard icon={Calendar}      label="Active Deadlines"   value={summary.activeDeadlines}   sub="This quarter"         color="bg-orange-500/20" />
-          <StatCard icon={Users}         label="Beneficiaries"      value={summary.totalBeneficiaries} sub="Estimated total"     color="bg-cyan-500/20"   />
-          <StatCard icon={IndianRupee}   label="Total Funding"      value={summary.totalFunding}      sub="Allocated budget"     color="bg-rose-500/20"   />
+          <StatCard icon={Layers}          label={t('analytics.totalSchemes')}    value={summary.totalSchemes}       sub={t('analytics.totalSchemesSub')}    color="bg-green-500/20"  />
+          <StatCard icon={LayoutDashboard} label={t('analytics.categories')}      value={summary.totalCategories}    sub={t('analytics.categoriesSub')}      color="bg-blue-500/20"   />
+          <StatCard icon={Map}             label={t('analytics.statesUTs')}       value={summary.statesCovered}      sub={t('analytics.statesUTsSub')}       color="bg-purple-500/20" />
+          <StatCard icon={Calendar}        label={t('analytics.activeDeadlines')} value={summary.activeDeadlines}    sub={t('analytics.activeDeadlinesSub')} color="bg-orange-500/20" />
+          <StatCard icon={Users}           label={t('analytics.beneficiaries')}   value={summary.totalBeneficiaries} sub={t('analytics.beneficiariesSub')}   color="bg-cyan-500/20"   />
+          <StatCard icon={IndianRupee}     label={t('analytics.totalFunding')}    value={summary.totalFunding}       sub={t('analytics.totalFundingSub')}    color="bg-rose-500/20"   />
         </div>
 
         {/* ── Row 1: Pie + Bar ───────────────────────────────────────────── */}
@@ -128,8 +130,8 @@ export default function Dashboard() {
 
           {/* Pie Chart */}
           <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
-            <h2 className="text-white font-bold text-base mb-1">Schemes by Category</h2>
-            <p className="text-gray-500 text-xs mb-5">Distribution across all ministries</p>
+            <h2 className="text-white font-bold text-base mb-1">{t('analytics.schemesByCategory')}</h2>
+            <p className="text-gray-500 text-xs mb-5">{t('analytics.schemesByCategorySub')}</p>
             <ResponsiveContainer width="100%" height={280}>
               <PieChart>
                 <Pie
@@ -167,8 +169,8 @@ export default function Dashboard() {
 
           {/* Bar Chart — Top 5 schemes */}
           <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
-            <h2 className="text-white font-bold text-base mb-1">Top 5 Most Applied Schemes</h2>
-            <p className="text-gray-500 text-xs mb-5">By total application count</p>
+            <h2 className="text-white font-bold text-base mb-1">{t('analytics.top5')}</h2>
+            <p className="text-gray-500 text-xs mb-5">{t('analytics.top5Sub')}</p>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={topSchemes} layout="vertical" margin={{ left: 0, right: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" horizontal={false} />
@@ -191,7 +193,7 @@ export default function Dashboard() {
                   content={<DarkTooltip />}
                   formatter={v => [`${(v / 1e6).toFixed(2)}M applications`]}
                 />
-                <Bar dataKey="applied" name="Applications" fill={BAR_COLOR} radius={[0, 6, 6, 0]} />
+                <Bar dataKey="applied" name={t('analytics.applications')} fill={BAR_COLOR} radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -201,12 +203,12 @@ export default function Dashboard() {
         <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700 mb-6">
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h2 className="text-white font-bold text-base mb-1">Monthly Application Trend</h2>
-              <p className="text-gray-500 text-xs">Oct 2024 – Mar 2025</p>
+              <h2 className="text-white font-bold text-base mb-1">{t('analytics.monthlyTrend')}</h2>
+              <p className="text-gray-500 text-xs">{t('analytics.monthlyTrendSub')}</p>
             </div>
             <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-3 py-1.5 rounded-full">
               <TrendingUp size={13} className="text-green-400" />
-              <span className="text-green-400 text-xs font-semibold">+37.8% growth</span>
+              <span className="text-green-400 text-xs font-semibold">{t('analytics.growth')}</span>
             </div>
           </div>
           <ResponsiveContainer width="100%" height={200}>
@@ -232,7 +234,7 @@ export default function Dashboard() {
               <Area
                 type="monotone"
                 dataKey="applications"
-                name="Applications"
+                name={t('analytics.applications')}
                 stroke={AREA_COLOR}
                 strokeWidth={2.5}
                 fill="url(#areaGrad)"
@@ -247,16 +249,16 @@ export default function Dashboard() {
         <div className="bg-gray-800 rounded-2xl p-6 border border-gray-700">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
-              <h2 className="text-white font-bold text-base mb-1">State & UT Coverage</h2>
-              <p className="text-gray-500 text-xs">Active central schemes per state</p>
+              <h2 className="text-white font-bold text-base mb-1">{t('analytics.stateCoverage')}</h2>
+              <p className="text-gray-500 text-xs">{t('analytics.stateCoverageSub')}</p>
             </div>
             {/* Legend */}
             <div className="flex items-center gap-4 flex-wrap">
               {[
-                { label: 'Very High (17-18)', color: 'bg-green-500' },
-                { label: 'High (14-16)', color: 'bg-emerald-600' },
-                { label: 'Medium (11-13)', color: 'bg-yellow-500' },
-                { label: 'Low (6-10)', color: 'bg-gray-600' },
+                { label: t('analytics.veryHigh'), color: 'bg-green-500' },
+                { label: t('analytics.high'),     color: 'bg-emerald-600' },
+                { label: t('analytics.medium'),   color: 'bg-yellow-500' },
+                { label: t('analytics.low'),      color: 'bg-gray-600' },
               ].map(l => (
                 <div key={l.label} className="flex items-center gap-1.5">
                   <div className={`w-3 h-3 rounded ${l.color}`} />
