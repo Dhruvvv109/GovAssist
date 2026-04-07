@@ -71,13 +71,14 @@ export default function Dashboard() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [activePie, setActivePie] = useState(null)
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
+    setLoading(true)
     getAnalytics()
       .then(d => { setData(d); setLoading(false) })
       .catch(() => setLoading(false))
-  }, [])
+  }, [i18n.language])
 
   if (loading) {
     return (

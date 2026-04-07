@@ -14,7 +14,7 @@ export const sendChatMessage = (message, history, l = 'en') =>
   axios.post(`${API_BASE}/chatbot`, { message, history, lang: l }).then(r => r.data.reply)
 
 export const getAnalytics = () =>
-  axios.get(`${API_BASE}/analytics`).then(r => r.data.data)
+  axios.get(`${API_BASE}/analytics?lang=${lang()}`).then(r => r.data.data)
 
 export const getDeadlines = () =>
   axios.get(`${API_BASE}/deadlines`).then(r => r.data.data)
